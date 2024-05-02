@@ -19,7 +19,6 @@ function start(error, topo){
     .enter().append("circle", ".pin")
     .attr("r", 1)
     .attr("transform", d => {
-      if (d.primary_fuel == "Nuclear")
       return "translate(" + projection([
         d.longitude,
         d.latitude
