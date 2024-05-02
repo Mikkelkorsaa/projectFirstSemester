@@ -4,7 +4,7 @@ let svg = d3.select(".container").append("svg").attr("width", "100%").attr("heig
 // Map and projection
 let path = d3.geoPath();
 let projection = d3.geoMercator()
-  .scale(160)
+  .scale(window.innerWidth/12)
   .translate([window.innerWidth / 2.2, window.innerHeight / 2]);
 
 // Load external data and boot
@@ -33,7 +33,6 @@ function ready(error, topo) {
   }
 
   // Draw the map
-  console.log(topo.features)
   svg.append("g")
     .selectAll("path")
     .data(topo.features)
