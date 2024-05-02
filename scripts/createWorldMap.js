@@ -5,7 +5,7 @@ let svg = d3.select(".container").append("svg").attr("width", "100%").attr("heig
 let path = d3.geoPath();
 let projection = d3.geoMercator()
   .scale(160)
-  .center([0,-24])
+  .center([0, -24])
   .translate([window.innerWidth / 2.2, window.innerHeight / 2]);
 
 // Data and color scale
@@ -20,25 +20,22 @@ d3.queue()
 
 function ready(error, topo) {
 
-  let mouseOver = function(d) {
-    d3.selectAll(".Country")
+  let mouseOver = function (d) {
+    d3.selectAll(".country")
       .transition()
       .duration(20)
-      .style("opacity", .5)
+      .style("opacity", .8)
     d3.select(this)
       .transition()
       .duration(200)
       .style("opacity", 1)
   }
 
-  let mouseLeave = function(d) {
-    d3.selectAll(".Country")
-      .transition()
-      .duration(200)
-      .style("opacity", .8)
+  let mouseLeave = function (d) {
     d3.select(this)
       .transition()
       .duration(200)
+      .style("opacity", .8)
   }
   // Draw the map
   svg.append("g")
@@ -46,15 +43,17 @@ function ready(error, topo) {
     .data(topo.features)
     .enter()
     .append("path")
-      // draw each country
-      .attr("d", d3.geoPath()
-        .projection(projection)
-      )
-      // set the color of each country
-      .attr("fill", "gray")
-      .attr("stroke", "white")
-      .attr("stroke-width", 0.2)
-      .attr("class", "Country" )
-      .on("mouseover", mouseOver )
-      .on("mouseleave", mouseLeave )
+    // draw each country
+    .attr("d", d3.geoPath()
+      .projection(projection)
+    )
+    // set the color of each country
+    .attr("fill", "gray")
+    .attr("stroke", "white")
+    .attr("stroke-width", 0.2)
+    .attr("class", "country")
+    .style("opasity", .8)
+    .on("mouseover", mouseOver)
+    .on("mouseleave", mouseLeave)
+
 }

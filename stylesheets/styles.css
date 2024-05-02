@@ -1,6 +1,16 @@
 body {
   margin: 0px;
   background-color: #222;
+  color: #f1f1f1;
+  font-family: sans-serif;
+}
+
+h1, p {
+  padding: 5px;
+}
+
+p {
+  width: 60%;
 }
 
 .container {
