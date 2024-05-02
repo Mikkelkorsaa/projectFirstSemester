@@ -1,5 +1,5 @@
 // The svg
-let svg = d3.select(".container").append("svg").attr("width", "100%").attr("height", "100%");
+let mapSvg = d3.select(".container").append("svg").attr("width", "100%").attr("height", "100%");
 
 // Map and projection
 let path = d3.geoPath();
@@ -33,7 +33,7 @@ function ready(error, topo) {
   }
 
   // Draw the map
-  svg.append("g")
+  mapSvg.append("g")
     .selectAll("path")
     .data(topo.features)
     .enter()
