@@ -34,3 +34,7 @@ p {
 .label {
   position: absolute;
 }
+
+.bar-chart-button{
+  margin: 100px;
+}

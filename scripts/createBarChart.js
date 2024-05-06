@@ -7,10 +7,13 @@ d3.queue().defer(d3.csv, "../datasheets/powerplant_co2_and_deathrate.csv")
 
 function barChart(error, topo) {
     const colNames = Object.keys(topo[0])
-    init(topo, svgWidth, svgHeight, colNames[2])
+    init(topo, svgWidth, svgHeight, colNames[1])
     console.log(colNames)
 }
-
+d3.selectAll("#deathrate, #co2_emission_in_tons").on("click", function (d){
+  //  let id= d.target.id;
+    console.log(d);
+}) 
 function init(dataset, w, h, colName) {
     svg = d3.select(".bar-chart-container").append("svg").attr("width", "100%").attr("height", "100%");
 
@@ -74,3 +77,9 @@ function init(dataset, w, h, colName) {
         .attr("fill", "green")
 }
 
+function changeColName(){
+    if(colName ==="deathrate"){
+        return 1 
+    }
+    return 1
+}
