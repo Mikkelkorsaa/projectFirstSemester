@@ -1,5 +1,5 @@
 const svgWidth = window.innerWidth / 2;
-const svgHeight = 500;
+const svgHeight = 300;
 const padding = 10;
 
 d3.queue().defer(d3.csv, "../datasheets/powerplant_co2_and_deathrate.csv")
@@ -8,6 +8,7 @@ d3.queue().defer(d3.csv, "../datasheets/powerplant_co2_and_deathrate.csv")
 function barChart(error, topo) {
     const colNames = Object.keys(topo[0])
     init(topo, svgWidth, svgHeight, colNames[2])
+    console.log(colNames)
 }
 
 function init(dataset, w, h, colName) {
@@ -44,11 +45,32 @@ function init(dataset, w, h, colName) {
             return 30
         })
         .attr("y", function (d, i) {
-            return ((h / dataset.length) * i) + 35;
+            return ((h / dataset.length) * i) + 20;
         })
         .attr("font-family", "sans-serif")
-        .attr("font-size", "30px")
+        .attr("font-size", "25px")
         .attr("fill", "green")
         //Her tilføjes en class til labels, således at vi kan vælge dem senere og undgå at ændre på al tekst i svg'en
         .attr("class", "label");
+
+    svg
+        .selectAll("text.value")
+        .data(dataset)
+        .enter()
+        .append("text")
+        .text(function (d){
+            if (colName === "deathrate") {
+                return d[colName] + " Deaths";
+            } else if (colName === "co2_emission_in_tons") {
+                return d[colName] + " Tons";
+            }
+        })
+        .attr("x", function (d){
+            return parseInt(d[colName]) + 255;
+        })
+        .attr("y", function (d, i) {
+            return ((h / dataset.length) * i) + 20;
+        }) 
+        .attr("fill", "green")
 }
+
