@@ -22,7 +22,7 @@ function ready(error, topo) {
     d3.select(this)
       .transition()
       .duration(200)
-      .style("opacity", 1)
+      .style("opacity", )
   }
 
   let mouseLeave = function (d) {
@@ -47,7 +47,7 @@ function ready(error, topo) {
     .attr("stroke", "black")
     .attr("stroke-width", 0.2)
     .attr("class", "country")
-    .style("opasity", .8)
+    .style("opacity", .8)
     .on("mouseover", mouseOver)
     .on("mouseleave", mouseLeave)
 
