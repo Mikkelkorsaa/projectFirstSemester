@@ -13,7 +13,12 @@ p {
   width: 60%;
 }
 
-.container {
+button {
+  padding: 5px;
+  margin: 20px;
+}
+
+.map-container {
   display: flex;
   justify-content: center;
   align-items: center;

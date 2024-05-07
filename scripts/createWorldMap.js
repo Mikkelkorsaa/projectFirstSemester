@@ -1,5 +1,5 @@
 // The svg
-let mapSvg = d3.select(".container").append("svg").attr("width", "100%").attr("height", "100%");
+let mapSvg = d3.select(".map-container").append("svg").attr("width", "100%").attr("height", "100%");
 
 // Map and projection
 let path = d3.geoPath();
