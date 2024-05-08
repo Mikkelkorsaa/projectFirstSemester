@@ -39,3 +39,24 @@ button {
 .label {
   position: absolute;
 }
+
+.fact-box {
+  background-color: #ffffff;
+  border: 1px solid black;
+  border-radius 5px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.fact-box h2 {
+  margin-top:  -5px;
+}
+
+.fact-box ul {
+  list-style-type: none;
+  padding: 2;
+}
+
+.fact-box li {
+  margin-bottom: 10px;
+}
