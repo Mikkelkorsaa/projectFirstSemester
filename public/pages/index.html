@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/styles.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <div>
+    <h1>Hello World!</h1>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ac ante non mauris congue pulvinar. Maecenas
+      interdum velit augue, nec porttitor neque venenatis quis. Suspendisse ac mi tortor. Nam et risus sed dolor
+      pellentesque iaculis. Aenean sed enim eget felis pellentesque aliquam in sit amet sem. Nullam a felis tempus,
+      egestas eros sed, auctor nisi. Quisque at massa ut quam eleifend congue non nec risus. Pellentesque ipsum nibh,
+      laoreet vitae orci ut, eleifend pulvinar metus. In pulvinar, mi ac placerat sodales, massa lectus venenatis
+      ligula, ut dictum ipsum dui quis nulla. Vestibulum augue ante, feugiat non ultricies sit amet, scelerisque quis
+      leo.
+    </p>
+  </div>
+  <div>
+    <button id="Coal">Coal</button>
+    <button id="Oil">Oil</button>
+    <button id="Gas">Natural gas</button>
+    <button id="Biomass">Biomass</button>
+    <button id="Hydro">Hydropower</button>
+    <button id="Wind">Wind</button>
+    <button id="Nuclear">Nuclear energy</button>
+    <button id="Solar">Solar</button>
+  </div>
+    <div class="map-container"></div>
+  <div>
+    <button id="deathrate">deathrate</button>
+    <button id="co2_emission_in_tons">co2_emission_in_tons</button>
+  </div>
+  <div class="bar-chart-container"></div>
+
+
+
+  <script src="https://d3js.org/d3.v4.js"></script>
+  <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+  <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+  <script src="../scripts/createWorldMap.js"></script>
+  <script src="../scripts/createDotsMap.js"></script>
+  <script src="../scripts/createBarChart.js"></script>
+</body>
+
+</html>
