@@ -43,7 +43,7 @@ button {
 .fact-box {
   background-color: #ffffff;
   border: 1px solid black;
-  border-radius 5px;
+  border-radius: 5px;
   padding: 10px;
   margin-bottom: 20px;
 }
