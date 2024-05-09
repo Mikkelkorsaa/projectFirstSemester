@@ -4,7 +4,7 @@ let mapSvg = d3.select(".map-container").append("svg").attr("width", "100%").att
 // Map and projection
 let path = d3.geoPath();
 let projection = d3.geoMercator()
-  .scale(window.innerWidth/12)
+  .scale(window.innerWidth / 12)
   .translate([window.innerWidth / 2.2, window.innerHeight / 2]);
 
 // Load external data and boot
@@ -13,7 +13,6 @@ d3.queue()
   .await(ready);
 
 function ready(error, topo) {
-
   let mouseOver = function (d) {
     d3.selectAll(".country")
       .transition()
@@ -22,7 +21,7 @@ function ready(error, topo) {
     d3.select(this)
       .transition()
       .duration(200)
-      .style("opacity", )
+      .style("opacity",)
   }
 
   let mouseLeave = function (d) {

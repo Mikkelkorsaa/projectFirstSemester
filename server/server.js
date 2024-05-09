@@ -20,7 +20,8 @@ app.get("/", (request, response) => {
   response.sendFile(path.resolve(__dirname, '../public/pages/index.html'));
 });
 
-app.post("/insert", );
+app.post("/insert", db.insertData);
+app.get("/get-pins", db.getPins)
 
 app.listen(port, () => {
   console.log('App running on port ' + port)

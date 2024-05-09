@@ -1,33 +1,49 @@
-d3.queue().defer(d3.csv, "../datasheets/global_power_plant_database.csv")
-  .await(start);
+/* d3.queue().defer(d3.csv, "../datasheets/global_power_plant_database.csv")
+  .await(start); */
+
+const url = "http://localhost:4000/get-pins"
+
+fetch(url).then(response => {
+  if (!response.ok) {
+    throw new Error('Network response was not ok');
+  }
+  return response.json();
+})
+  .then(data => {
+    console.log(data)
+    start(data)
+  })
 
 const points = [];
 const unique = [];
 
-function start(error, topo) {
-  for (let i = 1; i < topo.length; i++) {
+function start(data) {
+  for (let i = 1; i < data.length; i++) {
     let newPoint = new Positions(
-      topo[i].latitude,
-      topo[i].longitude,
-      topo[i].primary_fuel
+      data[i].latitude,
+      data[i].longitude,
+      data[i].fuel_name
     );
     points.push(newPoint);
-    if (!unique.includes(topo[i].primary_fuel)) {
-      unique.push(topo[i].primary_fuel)
+    if (!unique.includes(data[i].primary_fuel)) {
+      unique.push(data[i].primary_fuel)
     }
   }
-  console.log(unique)
+
+  console.log(points)
 
   d3.selectAll("#Coal, #Oil, #Gas, #Biomass, #Hydro, #Wind, #Nuclear, #Solar").on("click", function () {
     let id = this.id;
 
+    console.log(id)
+    
     mapSvg.selectAll(".pin").remove()
 
     mapSvg.append("g")
       .selectAll(".pin")
       .data(points)
       .enter()
-      .filter(d => {return d.primary_fuel == id })
+      .filter(d => { return d.primary_fuel == id })
       .append("circle", ".pin")
       .attr("r", 1)
       .attr("transform", d => {
