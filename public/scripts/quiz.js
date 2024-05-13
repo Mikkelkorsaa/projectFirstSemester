@@ -1,4 +1,3 @@
-
 var textElement = document.getElementById("changeable-text2");
 var buttonElement = document.getElementById("change-button2");
 
