@@ -20,7 +20,7 @@ var changeButton5 = document.getElementById("change-button5");
 
 changeButton1.addEventListener("click", function() {
 
-  changeableText1.textContent = "Coal er mest farligt";
+  changeableText1.textContent = "Kul er mest farligt";
   
   changeButton1.textContent = "Skjul svar";
 });
@@ -34,7 +34,7 @@ changeButton2.addEventListener("click", function() {
 
 changeButton3.addEventListener("click", function() {
  
-  changeableText3.textContent = "Solar";
+  changeableText3.textContent = "Kul dræber flest";
   
   changeButton3.textContent = "Skjul svar";
 });
