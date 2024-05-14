@@ -12,7 +12,7 @@ d3.queue()
   .defer(d3.json, "https://raw.githubusercontent.com/JoshYEn/geojson-world/master/world-geo-50m.json")
   .await(ready);
 
-function ready(error, topo) {
+function ready(error, data) {
   let mouseOver = function (d) {
     d3.selectAll(".country")
       .transition()
@@ -28,13 +28,13 @@ function ready(error, topo) {
     d3.select(this)
       .transition()
       .duration(200)
-      .style("opacity", .8)
+      .style("opacity", .8);
   }
 
   // Draw the map
   mapSvg.append("g")
     .selectAll("path")
-    .data(topo.features)
+    .data(data.features)
     .enter()
     .append("path")
     // draw each country
@@ -48,6 +48,33 @@ function ready(error, topo) {
     .attr("class", "country")
     .style("opacity", .8)
     .on("mouseover", mouseOver)
-    .on("mouseleave", mouseLeave)
+    .on("mouseleave", mouseLeave);
+}
+
+const powerPlantFuelsUrl = "http://localhost:4000/get-power-plant-fuels";
+
+fetch(powerPlantFuelsUrl).then(response => {
+  if (!response.ok) {
+    throw new Error('Network response was not ok');
+  }
+  return response.json();
+})
+  .then(data => {
+    makeGraphOnCountrys(data);
+  })
+
+
+
+function makeGraphOnCountrys(data) {
+  console.log(data);
+  const country = d3.selectAll(".country").data(data);
+
+  let click = function (d) {
+    console.log(d3.select(this).data())
+    d3.select("body").append("div").attr("class", "graph-box")
+  } 
+
+  country.on("click", click)
 
 }
+

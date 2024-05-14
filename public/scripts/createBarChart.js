@@ -43,13 +43,13 @@ function init(dataset, w, h, colName) {
         .data(dataset)
         .enter()
         .append("text")
-        .text(function (d) {
+        .text((d) => {
             return d.source;
         })
-        .attr("x", function (d) {
+        .attr("x", (d) => {
             return 30
         })
-        .attr("y", function (d, i) {
+        .attr("y", (d, i) => {
             return ((h / dataset.length) * i) + 20;
         })
         .attr("font-family", "sans-serif")
@@ -63,17 +63,17 @@ function init(dataset, w, h, colName) {
         .data(dataset)
         .enter()
         .append("text")
-        .text(function (d) {
+        .text((d) => {
             if (colName === "deathrate") {
                 return d[colName] + " Deaths";
             } else if (colName === "co2_emission_in_tons") {
                 return d[colName] + " Tons";
             }
         })
-        .attr("x", function (d) {
+        .attr("x", (d) => {
             return parseInt(d[colName]) + 255;
         })
-        .attr("y", function (d, i) {
+        .attr("y", (d, i) => {
             return ((h / dataset.length) * i) + 20;
         })
         .attr("fill", "green")
@@ -86,7 +86,7 @@ function animateUpdateRects(colName) {
     selectRects
         .transition()
         .duration(1500)
-        .attr("width", d => {
+        .attr("width", (d) => {
             return d[colName]
         })
 
@@ -98,10 +98,10 @@ function animateUpdateLabels(colName) {
     selectLabels
         .transition()
         .duration(1500)
-        .attr("x", d => {
+        .attr("x", (d) => {
             return parseInt(d[colName]) + 255;
         })
-        .text(d => {
+        .text((d) => {
             if (colName === "deathrate") {
                 return d[colName] + " Deaths";
             } else if (colName === "co2_emission_in_tons") {

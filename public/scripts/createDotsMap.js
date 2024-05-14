@@ -1,16 +1,15 @@
 /* d3.queue().defer(d3.csv, "../datasheets/global_power_plant_database.csv")
   .await(start); */
 
-const url = "http://localhost:4000/get-pins"
+const pinsUrl = "http://localhost:4000/get-pins"
 
-fetch(url).then(response => {
+fetch(pinsUrl).then(response => {
   if (!response.ok) {
     throw new Error('Network response was not ok');
   }
   return response.json();
 })
   .then(data => {
-    console.log(data)
     start(data)
   })
 
@@ -30,30 +29,25 @@ function start(data) {
     }
   }
 
-  console.log(points)
-
   d3.selectAll("#Coal, #Oil, #Gas, #Biomass, #Hydro, #Wind, #Nuclear, #Solar").on("click", function () {
     let id = this.id;
 
-    console.log(id)
-    
     mapSvg.selectAll(".pin").remove()
 
     mapSvg.append("g")
       .selectAll(".pin")
       .data(points)
       .enter()
-      .filter(d => { return d.primary_fuel == id })
+      .filter((d) => { return d.primary_fuel == id })
       .append("circle", ".pin")
       .attr("r", 1)
-      .attr("transform", d => {
+      .attr("transform", (d) => {
         return "translate(" + projection([
           d.longitude,
           d.latitude
         ]) + ")";
       })
       .attr("class", "pin")
-
   })
 }
 

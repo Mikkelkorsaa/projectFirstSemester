@@ -1,73 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/styles.css" />
+    <title>Document</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/stylesheets/styles.css">
-  <title>Document</title>
-</head>
+  <body>
+    <div>
+      <h1>Er atomkraftværker viiiiirkelig så farlige?</h1>
+      <p>
+        På denne side kan du ved hjælp af datavisualisering blive klogere på de
+        forskellige kraftværker. Verdenskortet giver dig et overblik over
+        kraftværker og hvor de ligger. Derudover kan du deltage i en quiz, hvor
+        du helt sikkert bliver overrasket!
+      </p>
+    </div>
+    <div>
+      <button id="Coal">Coal</button>
+      <button id="Oil">Oil</button>
+      <button id="Gas">Natural gas</button>
+      <button id="Biomass">Biomass</button>
+      <button id="Hydro">Hydropower</button>
+      <button id="Wind">Wind</button>
+      <button id="Nuclear">Nuclear energy</button>
+      <button id="Solar">Solar</button>
+    </div>
+    <div class="map-container"></div>
+    <div>
+      <button id="deathrate">deathrate</button>
+      <button id="co2_emission_in_tons">co2_emission_in_tons</button>
+    </div>
+    <div class="bar-chart-container"></div>
 
-<body>
-  <div>
-    <h1>Hello World!</h1>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ac ante non mauris congue pulvinar. Maecenas
-      interdum velit augue, nec porttitor neque venenatis quis. Suspendisse ac mi tortor. Nam et risus sed dolor
-      pellentesque iaculis. Aenean sed enim eget felis pellentesque aliquam in sit amet sem. Nullam a felis tempus,
-      egestas eros sed, auctor nisi. Quisque at massa ut quam eleifend congue non nec risus. Pellentesque ipsum nibh,
-      laoreet vitae orci ut, eleifend pulvinar metus. In pulvinar, mi ac placerat sodales, massa lectus venenatis
-      ligula, ut dictum ipsum dui quis nulla. Vestibulum augue ante, feugiat non ultricies sit amet, scelerisque quis
-      leo.
-    </p>
-  </div>
-  <div>
-    <button id="Coal">Coal</button>
-    <button id="Oil">Oil</button>
-    <button id="Gas">Natural gas</button>
-    <button id="Biomass">Biomass</button>
-    <button id="Hydro">Hydropower</button>
-    <button id="Wind">Wind</button>
-    <button id="Nuclear">Nuclear energy</button>
-    <button id="Solar">Solar</button>
-  </div>
-  <div class="map-container"></div>
-  <div>
-    <button id="deathrate">deathrate</button>
-    <button id="co2_emission_in_tons">co2_emission_in_tons</button>
-  </div>
-  <div class="bar-chart-container"></div>
+    <div class="fact-box">
+      <h2>Quiz-Time</h2>
+      <ul>
+        <li><strong>Hvad tror du er mest farligt?</strong></li>
+        <p id="changeable-text1">Nuclear/Coal</p>
+        <button id="change-button1">Se svar</button>
+        <li><strong>Hvilken kraftværk udleder mest Co2?</strong></li>
+        <p id="changeable-text2">Nuclear/Coal/Hydropower</p>
+        <button id="change-button2">Se svar</button>
+        <li><strong>Hvilken dræber mest?</strong></li>
+        <p id="changeable-text3">Wind/Biomass/Solar</p>
+        <button id="change-button3">Se svar</button>
+        <li>
+          <strong
+            >Hvilken energikilde har den højeste effektivitet ved
+            energiproduktion?</strong
+          >
+        </li>
+        <p id="changeable-text4">Nuclear/Coal/Solar</p>
+        <button id="change-button4">Se svar</button>
+        <li>
+          <strong
+            >Var du klar over at atomkraftværk er det grønneste kraftværk?
+          </strong>
+        </li>
+        <p id="changeable-text5">Ja/Nej</p>
+        <button id="change-button5">Se svar</button>
+      </ul>
+    </div>
 
-  <div class="fact-box">
-    <h2>Quiz-Time</h2>
-    <ul> 
-      <li><strong>Hvad tror du er mest farligt?</strong></li>
-      <p id="changeable-text1">Nuclear/Coal</p>
-      <button id="change-button1">Se svar</button>
-      <li><strong>Hvilken kraftværk udleder mest Co2?</strong></li>
-      <p id="changeable-text2">Nuclear/Coal/Hydropower</p>
-      <button id="change-button2">Se svar</button>
-      <li><strong>Hvilken dræber mest?</strong> </li>
-      <p id="changeable-text3">Wind/Biomass/Solar</p>
-      <button id="change-button3">Se svar</button>
-      <li><strong>Hvilken energikilde har den højeste effektivitet ved energiproduktion?</strong></li>
-      <p id="changeable-text4">Nuclear/Coal/Solar</p>
-      <button id="change-button4">Se svar</button>
-      <li><strong>Var du klar over at atomkraftværk er det grønneste kraftværk? </strong></li>
-      <p id="changeable-text5">Ja/Nej</p>
-      <button id="change-button5">Se svar</button>
-    </ul>
-  </div>
-
-
-
-  <script src="https://d3js.org/d3.v4.js"></script>
-  <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
-  <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
-  <script src="../scripts/createWorldMap.js"></script>
-  <script src="../scripts/createDotsMap.js"></script>
-  <script src="../scripts/createBarChart.js"></script>
-  <script src="../scripts/quiz.js"></script>
-</body>
-
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+    <script src="../scripts/createWorldMap.js"></script>
+    <script src="../scripts/createDotsMap.js"></script>
+    <script src="../scripts/createBarChart.js"></script>
+    <script src="../scripts/quiz.js"></script>
+  </body>
 </html>

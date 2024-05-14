@@ -1,11 +1,7 @@
-INSERT INTO country_info (country_postal, country_name, latitude, longitude, fuel_id)
+INSERT INTO country_info (country_postal, country_name)
 SELECT 
-    country,
-    country_long,
-    latitude::NUMERIC,
-    longitude::NUMERIC,
-    fi.fuel_id
+    DISTINCT(country),
+    country_long
 FROM 
-    tmp_power_plants AS tpp
-JOIN 
-    fuel_info AS fi ON tpp.primary_fuel = fi.fuel_name;
+    tmp_power_plants
+ORDER BY country_long

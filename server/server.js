@@ -22,6 +22,7 @@ app.get("/", (request, response) => {
 
 app.post("/insert", db.insertData);
 app.get("/get-pins", db.getPins)
+app.get("/get-power-plant-fuels", db.getPowerPlantFuels)
 
 app.listen(port, () => {
   console.log('App running on port ' + port)

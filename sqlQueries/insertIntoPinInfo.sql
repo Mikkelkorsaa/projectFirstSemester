@@ -1,11 +1,11 @@
-INSERT INTO pin_info (country_postal, country_name, latitude, longitude, fuel_id)
-SELECT 
-    country,
-    country_long,
-    latitude::NUMERIC,
-    longitude::NUMERIC,
+INSERT INTO
+    pin_info (latitude, longitude, country_id, fuel_id)
+SELECT
+    latitude :: NUMERIC,
+    longitude :: NUMERIC,
+    ci.country_id,
     fi.fuel_id
-FROM 
+FROM
     tmp_power_plants tpp
-JOIN 
-    fuel_info fi ON tpp.primary_fuel = fi.fuel_name;
+    JOIN country_info ci ON tpp.country = ci.country_postal
+    JOIN fuel_info fi ON tpp.primary_fuel = fi.fuel_name;
