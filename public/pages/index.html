@@ -33,34 +33,19 @@
     </div>
     <div class="bar-chart-container"></div>
 
-    <div class="fact-box">
-      <h2>Quiz-Time</h2>
-      <ul>
-        <li><strong>Hvad tror du er mest farligt?</strong></li>
-        <p id="changeable-text1">Nuclear/Coal</p>
-        <button id="change-button1">Se svar</button>
-        <li><strong>Hvilken kraftværk udleder mest Co2?</strong></li>
-        <p id="changeable-text2">Nuclear/Coal/Hydropower</p>
-        <button id="change-button2">Se svar</button>
-        <li><strong>Hvilken dræber mest?</strong></li>
-        <p id="changeable-text3">Wind/Biomass/Solar</p>
-        <button id="change-button3">Se svar</button>
-        <li>
-          <strong
-            >Hvilken energikilde har den højeste effektivitet ved
-            energiproduktion?</strong
-          >
-        </li>
-        <p id="changeable-text4">Nuclear/Coal/Solar</p>
-        <button id="change-button4">Se svar</button>
-        <li>
-          <strong
-            >Var du klar over at atomkraftværk er det grønneste kraftværk?
-          </strong>
-        </li>
-        <p id="changeable-text5">Ja/Nej</p>
-        <button id="change-button5">Se svar</button>
-      </ul>
+    <div class="flip-box" id="quiz-box">
+      <div class="flip-box-inner" id="flip-box-inner">
+        <div class="flip-box-front" id="question-front">
+          <h2>Hvad tror du er mest farligt?</h2>
+          <button onclick="revealAnswer(this)">Nuclear</button>
+          <button onclick="revealAnswer(this)">Coal</button>
+          <button onclick="revealAnswer(this)">Solar</button>
+        </div>
+        <div class="flip-box-back" id="question-back">
+          <h2>Coal er mest farligt</h2>
+          <p>Kulkraftværker er både den energikilde der udleder mest Co2, og er den mest farlige at være omkring.</p>
+        </div>
+      </div>
     </div>
     <div>
       <button onclick="topFunction()" id="buttonToTop" title="goToTop">Top</button>
