@@ -19,19 +19,18 @@ button {
 }
 
 .map-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: relative;
   height: 100vh;
   margin: 0px;
   padding: 0px;
   height: 70vh;
 }
 
+.map {
+  position: absolute;
+}
+
 .bar-chart-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   margin: 0px;
   height: 500px;
 }

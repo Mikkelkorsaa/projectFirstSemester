@@ -1,9 +1,9 @@
 // The svg
-let mapSvg = d3.select(".map-container").append("svg").attr("width", "100%").attr("height", "100%");
+const mapSvg = d3.select(".map-container").append("svg").attr("class", "map").attr("width", "100%").attr("height", "100%");
 
 // Map and projection
-let path = d3.geoPath();
-let projection = d3.geoMercator()
+const path = d3.geoPath();
+const projection = d3.geoMercator()
   .scale(window.innerWidth / 12)
   .translate([window.innerWidth / 2.2, window.innerHeight / 2]);
 
@@ -13,7 +13,7 @@ d3.queue()
   .await(ready);
 
 function ready(error, data) {
-  let mouseOver = function (d) {
+  const mouseOver = function (d) {
     d3.selectAll(".country")
       .transition()
       .duration(200)
@@ -24,7 +24,7 @@ function ready(error, data) {
       .style("opacity",)
   }
 
-  let mouseLeave = function (d) {
+  const mouseLeave = function (d) {
     d3.select(this)
       .transition()
       .duration(200)
@@ -63,18 +63,46 @@ fetch(powerPlantFuelsUrl).then(response => {
     makeGraphOnCountrys(data);
   })
 
-
+const totalFuelsInCountrys = [];
 
 function makeGraphOnCountrys(data) {
-  console.log(data);
-  const country = d3.selectAll(".country").data(data);
+
+  const countries = [];
+  for (const row of data) {
+    const country = countries.find(c => c.countryPostal === row.country_postal);
+
+    if (country) {
+      country.fuelName.push(row.fuel_name);
+      country.total.push(row.total);
+    } else {
+      countries.push({
+        countryPostal: row.country_postal,
+        fuelName: [row.fuel_name],
+        total: [row.total],
+      });
+    }
+  }
 
   let click = function (d) {
-    console.log(d3.select(this).data())
-    d3.select("body").append("div").attr("class", "graph-box")
-  } 
+    const location = d3.mouse(this);
+    const clickedCountry = d3.select(this).data()[0].properties.iso_a3;
+    const countryData = countries.find(c => c.countryPostal === clickedCountry)
 
-  country.on("click", click)
-
+    if (countryData === undefined) {
+      return
+    } else {
+      d3.selectAll(".graph-box").remove()
+      const graphBox = d3.select(".map-container")
+        .append("div")
+        .attr("class", "graph-box")
+        .style("left", location[0] + "px")
+        .style("top", location[1] + "px")
+        .data([countryData])
+      
+      graphBox.append("svg").attr("width", "100%").attr("height", "100%")
+      
+      console.log("clicked")
+    }
+  }
+  d3.selectAll(".country").on("click", click);
 }
-
