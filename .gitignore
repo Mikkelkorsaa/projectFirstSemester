@@ -8,3 +8,4 @@ desktop.ini
 .Trashes
 ._*
 server/node_modules/
+server/.env
