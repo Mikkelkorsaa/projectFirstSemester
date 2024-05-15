@@ -21,7 +21,7 @@ function ready(error, data) {
     d3.select(this)
       .transition()
       .duration(200)
-      .style("opacity",)
+      .style("opacity")
   }
 
   const mouseLeave = function (d) {
@@ -73,36 +73,128 @@ function makeGraphOnCountrys(data) {
 
     if (country) {
       country.fuelName.push(row.fuel_name);
-      country.total.push(row.total);
+      country.total.push(parseInt(row.total));
     } else {
       countries.push({
         countryPostal: row.country_postal,
+        countryName: row.country_name,
         fuelName: [row.fuel_name],
-        total: [row.total],
+        total: [parseInt(row.total)],
       });
     }
   }
 
-  let click = function (d) {
+  let click = function () {
+    const w = 500;
+    const h = 440;
+    const padding = 35;
     const location = d3.mouse(this);
     const clickedCountry = d3.select(this).data()[0].properties.iso_a3;
-    const countryData = countries.find(c => c.countryPostal === clickedCountry)
+    const countryData = countries.find(c => c.countryPostal === clickedCountry);
+
+    const mouseLeave = function () {
+      d3.select(this)
+        .transition()
+        .duration(200)
+        .style("opacity", 0)
+        .remove();
+    }
+
+    const graphBox = d3.select(".map-container")
+      .append("div")
+      .attr("id", "graph-box")
+      .style("left", graphLocationX(location[0], w) + "px")
+      .style("top", (location[1]- 1) + "px")
+      .on("mouseleave", mouseLeave);
 
     if (countryData === undefined) {
-      return
+      graphBox
+        .append("p")
+        .attr("class", "no-data")
+        .text("There is no data for this country :(");
+
     } else {
-      d3.selectAll(".graph-box").remove()
-      const graphBox = d3.select(".map-container")
-        .append("div")
-        .attr("class", "graph-box")
-        .style("left", location[0] + "px")
-        .style("top", location[1] + "px")
-        .data([countryData])
-      
-      graphBox.append("svg").attr("width", "100%").attr("height", "100%")
-      
-      console.log("clicked")
+
+      graphBox
+        .append("h2")
+        .text(countryData.countryName)
+        .attr("class", "graph-header")
+
+      const graphSvg = graphBox.append("svg").attr("class", "country-graph").attr("width", "100%").attr("height", "100%");
+
+      const xScale = d3.scaleBand()
+        .domain(d3.range(countryData.total.length))
+        .rangeRound([padding, w])
+        .paddingInner(0.1);
+
+      const yScale = d3.scaleLinear()
+        .domain([0, d3.max(countryData.total) + 20])
+        .range([h - padding, padding]);
+
+      const xAxis = d3.axisBottom()
+        .scale(xScale).tickFormat(function (i) { return countryData.fuelName[i]; });
+
+      const yAxis = d3.axisLeft()
+        .scale(yScale).ticks(5);
+
+      graphSvg
+        .append("g")
+        .selectAll("rect")
+        .data(countryData.total)
+        .enter()
+        .append("rect")
+        .attr("class", "map-graph-bar")
+        .attr("x", function (d, i) {
+          return xScale(i);
+        })
+        .attr("y", function (d) {
+          return yScale(d);
+        })
+        .attr("width", xScale.bandwidth())
+        .attr("height", function (d) {
+          return h - padding - yScale(d);
+        })
+        .attr("fill", "darkblue");
+
+      graphSvg.append('text')
+        .attr('x', 5)
+        .attr('y', 20)
+        .attr('text-anchor', 'left')
+        .style('font-family', 'Helvetica')
+        .style('font-size', 'small')
+        .text('Number of fuel usage');
+
+      graphSvg.append("g")
+        .attr("class", "axis")
+        .attr("transform", "translate(" + padding + ",0)")
+        .call(yAxis);
+
+      graphSvg.append("g")
+        .attr("class", "axis")
+        .attr("transform", "translate(0," + (h - padding) + ")")
+        .call(xAxis);
+
+      graphSvg.append("g")
+        .selectAll("text")
+        .data(countryData.total)
+        .enter()
+        .append("text")
+        .attr("class", "map-graph-num")
+        .attr("x", function (d, i) {
+          return xScale(i) + ((xScale.bandwidth()/2) - 10);
+        })
+        .attr("y", d => yScale(d) - 5)
+        .text(d => d)
     }
   }
   d3.selectAll(".country").on("click", click);
+}
+
+function graphLocationX(xValue, boxWidth){
+  if (xValue > window.innerWidth/2){
+    return (xValue - boxWidth) + 1
+  } else {
+    return xValue - 1
+  }
+
 }
