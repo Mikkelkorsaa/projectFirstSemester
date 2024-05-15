@@ -15,7 +15,7 @@ p {
 
 button {
   padding: 5px;
-  margin: 20px;
+  margin: 5px;
 }
 
 .map-container {
@@ -38,8 +38,4 @@ button {
 
 .label {
   position: absolute;
-}
-
-.bar-chart-button{
-  margin: 100px;
 }
