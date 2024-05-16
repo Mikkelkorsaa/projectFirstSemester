@@ -42,6 +42,10 @@ button {
   position: absolute;
 }
 
+.pin {
+  pointer-events: none;
+}
+
 .bar-chart-container {
   margin: 0px;
   height: 500px;
@@ -72,11 +76,29 @@ button {
   margin-bottom: 10px;
 }
 
-.graph-box {
+#graph-box {
   position: absolute;
   width: 500px;
   height: 500px;
-  background-color: aquamarine;
+  background-color: lightgray;
+  border-radius: 5px;
+  border-style: solid;
+}
+
+button#Clear {
+  margin-left: 100px;
+}
+
+.graph-header {
+  padding-left: 5px;
+}
+
+.country-graph {
+  position: absolute;
+}
+
+.no-data {
+  font-size: 50px;
 }
 
 #buttonToTop {

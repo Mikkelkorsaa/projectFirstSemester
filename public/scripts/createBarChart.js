@@ -55,7 +55,6 @@ function init(dataset, w, h, colName) {
         .attr("font-family", "sans-serif")
         .attr("font-size", "25px")
         .attr("fill", "green")
-        //Her tilføjes en class til labels, således at vi kan vælge dem senere og undgå at ændre på al tekst i svg'en
         .attr("class", "label");
 
     barChartSvg
