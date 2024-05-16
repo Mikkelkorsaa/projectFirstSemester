@@ -33,6 +33,7 @@
     </div>
     <div class="bar-chart-container"></div>
 
+    
     <div class="flip-box" id="quiz-box">
       <div class="flip-box-inner" id="flip-box-inner">
         <div class="flip-box-front" id="question-front">
@@ -42,9 +43,14 @@
           <button onclick="revealAnswer(this)">Solar</button>
         </div>
         <div class="flip-box-back" id="question-back">
-          <h2>Coal er mest farligt</h2>
+          <h2 id="answer-feedback"></h2>
           <p>Kulkraftværker er både den energikilde der udleder mest Co2, og er den mest farlige at være omkring.</p>
+          <button onclick="nextQuestion()">Næste</button>
         </div>
+        <div class="flip-box-back" id="question-back">
+          <h2 ></h2>
+        </div>
+        
       </div>
     </div>
     <div>
