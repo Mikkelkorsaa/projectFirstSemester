@@ -191,3 +191,12 @@ button#Clear {
 .flip-box ul li {
   cursor: pointer;
 }
+
+
+.wrong-answer {
+  background-color: #ffcccc; /* Ændrer baggrundsfarven for det forkerte svar */
+}
+
+.correct-answer {
+  background-color: #ccffcc; /* Ændrer baggrundsfarven for det rigtige svar */
+}
