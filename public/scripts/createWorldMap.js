@@ -14,6 +14,8 @@ d3.queue()
 
 function ready(error, data) {
   const mouseOver = function (d) {
+
+    // Hover effect
     d3.selectAll(".country")
       .transition()
       .duration(200)
@@ -174,7 +176,7 @@ function makeGraphOnCountrys(data) {
         })
         .attr("fill", "darkblue");
       
-      // Making 
+      // Making the label for the graph
       graphSvg.append('text')
         .attr('x', 5)
         .attr('y', 20)
@@ -183,16 +185,19 @@ function makeGraphOnCountrys(data) {
         .style('font-size', 'small')
         .text('Number of fuel usage');
 
+      // Making y axis appear
       graphSvg.append("g")
         .attr("class", "axis")
         .attr("transform", "translate(" + padding + ",0)")
         .call(yAxis);
-
+      
+      // Making x axis appear
       graphSvg.append("g")
         .attr("class", "axis")
         .attr("transform", "translate(0," + (h - padding) + ")")
         .call(xAxis);
-
+      
+      // Making the numbers on top of each bars
       graphSvg.append("g")
         .selectAll("text")
         .data(countryData.total)
@@ -206,9 +211,12 @@ function makeGraphOnCountrys(data) {
         .text(d => d)
     }
   }
+
+  // Giving the click function to all countries
   d3.selectAll(".country").on("click", click);
 }
 
+// Function to find out if the graph needs to be on the right or the left of the cursor
 function graphLocationX(xValue, boxWidth) {
   if (xValue > window.innerWidth / 2) {
     return (xValue - boxWidth) + 1
