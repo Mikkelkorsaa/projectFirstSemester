@@ -1,7 +1,7 @@
 body {
   margin: 0px;
-  background-color: #f1f1f1;
-  color: #222;
+  background-color: floralwhite;
+  color: black;
   font-family: serif;
 }
 
@@ -12,7 +12,7 @@ h1, p {
 h1 {
   text-align: center;
   text-transform: uppercase;
-  color: #4CAF50;}
+  color: green;}
 
 .center-div {
   display: flex;
