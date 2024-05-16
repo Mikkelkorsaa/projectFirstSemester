@@ -29,25 +29,30 @@ function start(data) {
     }
   }
 
-  d3.selectAll("#Coal, #Oil, #Gas, #Biomass, #Hydro, #Wind, #Nuclear, #Solar").on("click", function () {
+  d3.selectAll("#Coal, #Oil, #Gas, #Biomass, #Hydro, #Wind, #Nuclear, #Solar, #Clear").on("click", function () {
     let id = this.id;
 
-    mapSvg.selectAll(".pin").remove()
+    if (id == "test") {
+      mapSvg.selectAll(".pin").remove()
+      return
+    } else {
+      mapSvg.selectAll(".pin").remove()
 
-    mapSvg.append("g")
-      .selectAll(".pin")
-      .data(points)
-      .enter()
-      .filter((d) => { return d.primary_fuel == id })
-      .append("circle", ".pin")
-      .attr("r", 1)
-      .attr("transform", (d) => {
-        return "translate(" + projection([
-          d.longitude,
-          d.latitude
-        ]) + ")";
-      })
-      .attr("class", "pin")
+      mapSvg.append("g")
+        .selectAll(".pin")
+        .data(points)
+        .enter()
+        .filter((d) => { return d.primary_fuel == id })
+        .append("circle", ".pin")
+        .attr("r", 1)
+        .attr("transform", (d) => {
+          return "translate(" + projection([
+            d.longitude,
+            d.latitude
+          ]) + ")";
+        })
+        .attr("class", "pin")
+    }
   })
 }
 

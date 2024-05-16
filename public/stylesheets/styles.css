@@ -73,6 +73,10 @@ button {
   border-style: solid;
 }
 
+button#Clear {
+  margin-left: 100px;
+}
+
 .graph-header {
   padding-left: 5px;
 }
