@@ -2,15 +2,27 @@ body {
   margin: 0px;
   background-color: #f1f1f1;
   color: #222;
-  font-family: sans-serif;
+  font-family: serif;
 }
 
 h1, p {
   padding: 5px;
 }
 
+h1 {
+  text-align: center;
+  text-transform: uppercase;
+  color: #4CAF50;}
+
+.center-div {
+  display: flex;
+  justify-content: center;
+}
+
 p {
   width: 60%;
+  vertical-align: middle;
+  text-align: center;
 }
 
 button {

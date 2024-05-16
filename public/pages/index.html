@@ -9,14 +9,18 @@
 
   <body>
     <div>
-      <h1>Er atomkraftværker viiiiirkelig så farlige?</h1>
-      <p>
-        På denne side kan du ved hjælp af datavisualisering blive klogere på de forskellige kraftværker. Mange tror, at atomkraftværk er det farligste kraftværker man kan have - men er det tilfældet, eller er det det, vi har fået at vide af samfundet? Her kan du danne dit eget overblik over hvilket kraftværket er det mest farlige og hvilket af dem er mest miljøvenlige.</br> </br>
-        Verdenskortet giver dig et overblik over kraftværker og hvor de ligger. Derudover kan du deltage i en quiz, hvor du helt sikkert bliver overrasket! 
-        
-      </p>
+      <h1>Are nuclear power plants reeeeeally so dangerous?</h1>
+      <div class="center-div">
+        <p>
+          On this page, you can become more knowledgeable about the various power plants through data visualization. Many believe that nuclear power plants are the most dangerous type of power plant out there - but is that the case, or is it what society has led us to believe? 
+        </br> </br> Here, you can form your own overview of which power plant poses the greatest risk and which of them is the most environmentally friendly.
+          The world map provides an overview of power plants and where they are located. Additionally, you can participate in a quiz where you will surely be surprised!
+          
+        </p>
+
+      </div>
     </div>
-    <div>
+    <div class="center-div">
       <button id="Coal">Coal</button>
       <button id="Oil">Oil</button>
       <button id="Gas">Natural gas</button>
@@ -36,14 +40,14 @@
     <div class="flip-box" id="quiz-box">
       <div class="flip-box-inner" id="flip-box-inner">
         <div class="flip-box-front" id="question-front">
-          <h2>Hvad tror du er mest farligt?</h2>
+          <h2>What do you think is most dangerous?</h2>
           <button onclick="revealAnswer(this)">Nuclear</button>
           <button onclick="revealAnswer(this)">Coal</button>
           <button onclick="revealAnswer(this)">Solar</button>
         </div>
         <div class="flip-box-back" id="question-back">
-          <h2>Coal er mest farligt</h2>
-          <p>Kulkraftværker er både den energikilde der udleder mest Co2, og er den mest farlige at være omkring.</p>
+          <h2>Coal is the most dangerous</h2>
+          <p>Coal power plants are the energy source that emits the most CO2 and is the most dangerous to be around</p>
         </div>
       </div>
     </div>
