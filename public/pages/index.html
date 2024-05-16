@@ -8,52 +8,45 @@
   </head>
 
   <body>
-    <div class="top-text">
-      <h1>Are nuclear power plants reeeeeally so dangerous?</h1>
-      <div class="center-div">
-        <p>
-          On this page, you can become more knowledgeable about the various power plants through data visualization. Many believe that nuclear power plants are the most dangerous type of power plant out there - but is that the case, or is it what society has led us to believe? 
-        </br> </br> Here, you can form your own overview of which power plant poses the greatest risk and which of them is the most environmentally friendly.
-          The world map provides an overview of power plants and where they are located. Additionally, you can participate in a quiz where you will surely be surprised!
-          
-        </p>
-
-      </div>
+    <div>
+      <h1>Er atomkraftværker viiiiirkelig så farlige?</h1>
+      <p>
+        På denne side kan du ved hjælp af datavisualisering blive klogere på de
+        forskellige kraftværker. Verdenskortet giver dig et overblik over
+        kraftværker og hvor de ligger. Derudover kan du deltage i en quiz, hvor
+        du helt sikkert bliver overrasket!
+      </p>
     </div>
-    <div class="center-div">
-      <button id="Coal" class="pin-button">Coal</button>
-      <button id="Oil" class="pin-button">Oil</button>
-      <button id="Gas" class="pin-button">Natural gas</button>
-      <button id="Biomass" class="pin-button">Biomass</button>
-      <button id="Hydro" class="pin-button">Hydropower</button>
-      <button id="Wind" class="pin-button">Wind</button>
-      <button id="Nuclear" class="pin-button">Nuclear</button>
-      <button id="Solar" class="pin-button">Solar</button>
-      <button id="Clear" class="pin-button">Clear</button>
+    <div>
+      <button id="Coal">Coal</button>
+      <button id="Oil">Oil</button>
+      <button id="Gas">Natural gas</button>
+      <button id="Biomass">Biomass</button>
+      <button id="Hydro">Hydropower</button>
+      <button id="Wind">Wind</button>
+      <button id="Nuclear">Nuclear energy</button>
+      <button id="Solar">Solar</button>
     </div>
     <div class="map-container"></div>
     <div>
-      <button id="deathrate">Deathrate</button>
-      <button id="co2_emission_in_tons">CO₂ Emission in Tons</button>
+      <button id="deathrate">deathrate</button>
+      <button id="co2_emission_in_tons">co2_emission_in_tons</button>
     </div>
     <div class="bar-chart-container"></div>
 
     <div class="flip-box" id="quiz-box">
       <div class="flip-box-inner" id="flip-box-inner">
         <div class="flip-box-front" id="question-front">
-          <h2>What do you think is most dangerous?</h2>
+          <h2>Hvad tror du er mest farligt?</h2>
           <button onclick="revealAnswer(this)">Nuclear</button>
           <button onclick="revealAnswer(this)">Coal</button>
           <button onclick="revealAnswer(this)">Solar</button>
         </div>
         <div class="flip-box-back" id="question-back">
-          <h2>Coal is the most dangerous</h2>
-          <p>Coal power plants are the energy source that emits the most CO2 and is the most dangerous to be around</p>
+          <h2>Coal er mest farligt</h2>
+          <p>Kulkraftværker er både den energikilde der udleder mest Co2, og er den mest farlige at være omkring.</p>
         </div>
       </div>
-    </div>
-    <div>
-      <button onclick="topFunction()" id="buttonToTop" title="goToTop">Top</button>
     </div>
 
     <script src="https://d3js.org/d3.v4.js"></script>
@@ -63,6 +56,5 @@
     <script src="../scripts/createDotsMap.js"></script>
     <script src="../scripts/createBarChart.js"></script>
     <script src="../scripts/quiz.js"></script>
-    <script src="../scripts/createButtonToTop.js"></script>
   </body>
 </html>
