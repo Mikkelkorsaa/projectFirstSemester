@@ -89,7 +89,7 @@ function makeGraphOnCountrys(data) {
       });
     }
   }
- 
+
 
   // Making click function for each country
   let click = function () {
@@ -127,7 +127,7 @@ function makeGraphOnCountrys(data) {
         .attr("class", "no-data")
         .text("There is no data for this country :(");
     }
-    
+
     // If there is any data, make a graph that shows it
     else {
       graphBox
@@ -176,7 +176,7 @@ function makeGraphOnCountrys(data) {
           return h - padding - yScale(d);
         })
         .attr("fill", "darkblue");
-      
+
       // Making the label for the graph
       graphSvg.append('text')
         .attr('x', 5)
@@ -191,13 +191,13 @@ function makeGraphOnCountrys(data) {
         .attr("class", "axis")
         .attr("transform", "translate(" + padding + ",0)")
         .call(yAxis);
-      
+
       // Making x axis appear
       graphSvg.append("g")
         .attr("class", "axis")
         .attr("transform", "translate(0," + (h - padding) + ")")
         .call(xAxis);
-      
+
       // Making the numbers on top of each bars
       graphSvg.append("g")
         .selectAll("text")
