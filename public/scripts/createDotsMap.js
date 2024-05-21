@@ -64,7 +64,4 @@ function Positions(latitude, longitude, primary_fuel) {
   this.primary_fuel = primary_fuel;
 }
 
-/*
-function pinColor(id){
-  if id=
-}*/
+
