@@ -31,7 +31,6 @@ function start(data) {
 
   d3.selectAll("#Coal, #Oil, #Gas, #Biomass, #Hydro, #Wind, #Nuclear, #Solar, #Clear").on("click", function () {
     let id = this.id;
-    console.log(id);
 
     if (id == "test") {
       mapSvg.selectAll(".pin").remove()
