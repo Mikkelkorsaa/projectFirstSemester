@@ -86,8 +86,18 @@ const getPowerPlantFuels = (request, response) => {
   });
 }
 
+const getHeatmap = (request, response) => {
+  pool.query("SELECT area_code, year_2021 FROM renewable_percentage ORDER BY area_code", (error, results) => {
+    if (error) {
+      throw error;
+    }
+    response.status(200).json(results.rows);
+  });
+}
+
 module.exports = {
   insertData,
   getPins,
-  getPowerPlantFuels
+  getPowerPlantFuels,
+  getHeatmap
 };
