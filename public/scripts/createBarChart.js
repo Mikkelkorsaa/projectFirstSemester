@@ -54,7 +54,7 @@ function init(dataset, w, h, colName) {
         })
         .attr("font-family", "sans-serif")
         .attr("font-size", "25px")
-        .attr("fill", "white")
+        .attr("fill", "black")
         .attr("class", "label");
 
     barChartSvg
@@ -75,7 +75,7 @@ function init(dataset, w, h, colName) {
         .attr("y", (d, i) => {
             return ((h / dataset.length) * i) + 20;
         })
-        .attr("fill", "white")
+        .attr("fill", "black")
         .attr("class", "value")
 }
 

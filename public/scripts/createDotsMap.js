@@ -31,6 +31,7 @@ function start(data) {
 
   d3.selectAll("#Coal, #Oil, #Gas, #Biomass, #Hydro, #Wind, #Nuclear, #Solar, #Clear").on("click", function () {
     let id = this.id;
+    console.log(id);
 
     if (id == "test") {
       mapSvg.selectAll(".pin").remove()
@@ -52,6 +53,7 @@ function start(data) {
           ]) + ")";
         })
         .attr("class", "pin")
+        .attr("fill", "green")
     }
   })
 }
@@ -61,3 +63,8 @@ function Positions(latitude, longitude, primary_fuel) {
   this.longitude = longitude;
   this.primary_fuel = primary_fuel;
 }
+
+/*
+function pinColor(id){
+  if id=
+}*/

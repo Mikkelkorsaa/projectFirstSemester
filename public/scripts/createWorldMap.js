@@ -89,6 +89,7 @@ function makeGraphOnCountrys(data) {
       });
     }
   }
+ 
 
   // Making click function for each country
   let click = function () {
