@@ -10,10 +10,10 @@ function revealAnswer(element) {
 
   // Check if the answer is correct
   if (userAnswer === correctAnswer) {
-    answerFeedback.textContent = "Korrekt svar!";
+    answerFeedback.textContent = "Correct Answer!";
     element.classList.add("correct-answer");
   } else {
-    answerFeedback.textContent = "Forkert svar. Det korrekte svar er: " + correctAnswer;
+    answerFeedback.textContent = "Wrong Answer. The correct answer is: " + correctAnswer;
     element.classList.add("wrong-answer");
   }
 
