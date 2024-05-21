@@ -19,16 +19,15 @@
         </p>
       </div>
     </div>
-    <div class="center-div">
-      <button id="Coal" class="pin-button">Coal</button>
-      <button id="Oil" class="pin-button">Oil</button>
-      <button id="Gas" class="pin-button">Natural gas</button>
-      <button id="Biomass" class="pin-button">Biomass</button>
-      <button id="Hydro" class="pin-button">Hydropower</button>
-      <button id="Wind" class="pin-button">Wind</button>
-      <button id="Nuclear" class="pin-button">Nuclear energy</button>
-      <button id="Solar" class="pin-button">Solar</button>
-      <button id="Clear" class="pin-button">Clear</button>
+    <div>
+      <button id="Coal">Coal</button>
+      <button id="Oil">Oil</button>
+      <button id="Gas">Natural gas</button>
+      <button id="Biomass">Biomass</button>
+      <button id="Hydro">Hydropower</button>
+      <button id="Wind">Wind</button>
+      <button id="Nuclear">Nuclear energy</button>
+      <button id="Solar">Solar</button>
     </div>
     <div class="map-container"></div>
     <div>
@@ -37,6 +36,7 @@
     </div>
     <div class="bar-chart-container"></div>
 
+    
     <div class="flip-box" id="quiz-box">
       <div class="flip-box-inner" id="flip-box-inner">
         <div class="flip-box-front" id="question-front">
@@ -46,14 +46,20 @@
           <button onclick="revealAnswer(this)">Solar</button>
         </div>
         <div class="flip-box-back" id="question-back">
-          <h2>Coal is the most dangerous</h2>
-          <p>Coal power plants are the energy source that emits the most CO2 and is the most dangerous to be around</p>
+          <h2 id="answer-feedback"></h2>
+          <p>Coal is the most dangerous.Coal power plants are the energy source that emits the most CO2 and is the most dangerous to be around</p>   
+          <button onclick="nextQuestion()">Next</button>
         </div>
+        <div class="flip-box-back" id="question-back">
+          <h2 ></h2>
+        </div>
+        
       </div>
     </div>
     <div>
       <button onclick="topFunction()" id="buttonToTop" title="goToTop">Top</button>
     </div>
+
     <script src="https://d3js.org/d3.v4.js"></script>
     <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
     <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
@@ -61,6 +67,6 @@
     <script src="../scripts/createDotsMap.js"></script>
     <script src="../scripts/createBarChart.js"></script>
     <script src="../scripts/quiz.js"></script>
-    <script src="../scripts/createButtonToTop.js"></script>
+    <script src="../scripts/createButtonToTop"></script>
   </body>
 </html>
