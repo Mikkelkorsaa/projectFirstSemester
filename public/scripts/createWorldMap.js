@@ -7,6 +7,35 @@ const projection = d3.geoMercator()
   .scale(window.innerWidth / 12)
   .translate([window.innerWidth / 2.2, window.innerHeight / 2]);
 
+var colorScale = d3.scaleThreshold()
+  .domain([0, 5, 10, 15, 20, 25, 50, 75, 100])
+  .range(d3.schemeGreens[9]);
+
+const heatmapUrl = "http://localhost:4000/get-heatmap";
+
+// Fetching data from the api
+fetch(heatmapUrl).then(response => {
+  if (!response.ok) {
+    throw new Error('Network response was not ok');
+  }
+  return response.json();
+})
+  .then(data => {
+   /*  for (let i = 0; i < data.length; i++) {
+      heatData.push({ area_code: data[i].area_code, year_2021: data[i].year_2021 })
+    } */
+    makeHeatMap(data)
+  })
+
+function makeHeatMap(data) {
+  d3.selectAll(".country").attr("fill", d => {
+    const code = parseInt(d.properties.un_a3);
+    const obj = data.find(o => o.area_code === code) || {};
+    return colorScale(obj.year_2021) || 0;
+  })
+
+}
+
 // Load external data and boot
 d3.queue()
   .defer(d3.json, "https://raw.githubusercontent.com/JoshYEn/geojson-world/master/world-geo-50m.json")
@@ -44,7 +73,7 @@ function ready(error, data) {
       .projection(projection)
     )
     // set the color of each country
-    .attr("fill", "gray")
+    .attr("fill", "grey")
     .attr("stroke", "black")
     .attr("stroke-width", 0.2)
     .attr("class", "country")
