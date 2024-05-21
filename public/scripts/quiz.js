@@ -42,7 +42,7 @@ function updateQuestion() {
     // Hide current question
     questionFront.style.display = "none";
     questionBack.style.display = "none";
-
+ 
     // Display new question
     var questionFrontNew = document.getElementById("qestion-front-" + currentQuestionIndex);
     var questionBackNew = document.getElementById("question-back-" + currentQuestionIndex);
