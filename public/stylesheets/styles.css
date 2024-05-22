@@ -17,18 +17,19 @@ h1 {
 }
 
 .top-text {
+  border-bottom: outset;
   margin-bottom: 30px;
-}
-
-p.top-text {
-  width: 60%;
-  vertical-align: middle;
-  text-align: center;
 }
 
 .center-div {
   display: flex;
   justify-content: center;
+}
+
+p {
+  width: 60%;
+  vertical-align: middle;
+  text-align: center;
 }
 
 button {
@@ -133,7 +134,7 @@ button#Clear {
   z-index: 99;
   border: none;
   outline: none;
-  background-color: rgb(18, 112, 6);
+  background-color: rgba(0, 0, 255, 0.521);
   color: white;
   cursor: pointer;
   padding: 15px;
@@ -141,13 +142,13 @@ button#Clear {
   font-size: 18px;
 }
 #buttonToTop:hover {
-  background-color: rgba(24, 223, 97, 0.521);
+  background-color: rgb(72, 63, 139);
 }
 
 .flip-box {
   background-color: transparent;
-  width: 300px;
-  height: 300px;
+  width: 250px;
+  height: 250px;
   perspective: 1000px;
 }
 
@@ -198,8 +199,9 @@ button#Clear {
 
 .correct-answer {
   background-color: #ccffcc; /* Ændrer baggrundsfarven for det rigtige svar */
-
 }
+
+
 
 #deathrate, #co2_emission_in_tons {
   align-self: center;
@@ -243,8 +245,8 @@ button#Clear {
 
 .flip-box {
   background-color: transparent;
-  width: 300px;
-  height: 300px;
+  width: 250px;
+  height: 250px;
   perspective: 1000px;
   margin: 20px auto;
   border-radius: 10px;
@@ -256,7 +258,7 @@ button#Clear {
   width: 100%;
   height: 100%;
   text-align: center;
-  transition: transform 0.6s;
+  transition: transform 0.5s;
   transform-style: preserve-3d;
 }
 
@@ -315,7 +317,7 @@ button.next-button {
 }
 
 button.next-button:hover {
-  background-color: #45a049;
+  background-color: #18bc77;
 }
 
 .correct-answer {
@@ -325,5 +327,3 @@ button.next-button:hover {
 .wrong-answer {
   background-color: #ffcccc; /* Wrong answer background */
 }
-
-
