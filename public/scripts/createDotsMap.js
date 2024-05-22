@@ -52,7 +52,7 @@ function start(data) {
           ]) + ")";
         })
         .attr("class", "pin")
-        .attr("fill", "green")
+        .attr("fill", "#d24e21")
     }
   })
 }
@@ -63,7 +63,4 @@ function Positions(latitude, longitude, primary_fuel) {
   this.primary_fuel = primary_fuel;
 }
 
-/*
-function pinColor(id){
-  if id=
-}*/
+
