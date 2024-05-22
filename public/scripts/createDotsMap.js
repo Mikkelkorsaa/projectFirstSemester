@@ -52,7 +52,7 @@ function start(data) {
           ]) + ")";
         })
         .attr("class", "pin")
-        .attr("fill", "green")
+        .attr("fill", "blue")
     }
   })
 }
