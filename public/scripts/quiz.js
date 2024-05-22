@@ -66,5 +66,3 @@ function updateQuestion() {
   if (questionFrontNew) questionFrontNew.style.display = "block";
   if (questionBackNew) questionBackNew.style.display = "block";
 }
-
-
