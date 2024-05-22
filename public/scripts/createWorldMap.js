@@ -7,9 +7,7 @@ const projection = d3.geoMercator()
   .scale(window.innerWidth / 12)
   .translate([window.innerWidth / 2.2, window.innerHeight / 2]);
 
-var colorScale = d3.scaleThreshold()
-  .domain([0, 5, 10, 15, 20, 25, 50, 75, 100])
-  .range(d3.schemeGreens[9]);
+const colorScale = d3.scaleSequential(d3.interpolateGreens);
 
 const heatmapUrl = "http://localhost:4000/get-heatmap";
 
@@ -31,7 +29,7 @@ function makeHeatMap(data) {
   d3.selectAll(".country").attr("fill", d => {
     const code = parseInt(d.properties.un_a3);
     const obj = data.find(o => o.area_code === code) || {};
-    return colorScale(obj.year_2021) || 0;
+    return colorScale(obj.year_2021 / 100) || 0;
   })
 
 }
@@ -52,14 +50,14 @@ function ready(error, data) {
     d3.select(this)
       .transition()
       .duration(200)
-      .style("opacity")
+      .style("opacity", 1)
   }
 
   const mouseLeave = function (d) {
-    d3.select(this)
+    d3.selectAll(".country")
       .transition()
       .duration(200)
-      .style("opacity", .8);
+      .style("opacity", 1);
   }
 
   // Draw the map
@@ -123,8 +121,8 @@ function makeGraphOnCountrys(data) {
   // Making click function for each country
   let click = function () {
     // Setting default values
-    const w = 500;
-    const h = 440;
+    const w = 400;
+    const h = 340;
     const padding = 35;
 
     // Get the location of the mouse, and data from the clicked country
@@ -204,7 +202,7 @@ function makeGraphOnCountrys(data) {
         .attr("height", function (d) {
           return h - padding - yScale(d);
         })
-        .attr("fill", "darkblue");
+        .attr("fill", "#355E3B");
 
       // Making the label for the graph
       graphSvg.append('text')
