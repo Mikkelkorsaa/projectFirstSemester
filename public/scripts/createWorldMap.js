@@ -75,7 +75,7 @@ function makeGraphOnCountrys(data) {
   // Taking the data, and putting it in an array with objects
   const countries = [];
   for (const row of data) {
-    const country = countries.find(c => c.countryPostal === row.country_postal);
+    const country = countries.find(c => c.countryPostal === row.country_postal); 
 
     if (country) {
       country.fuelName.push(row.fuel_name);

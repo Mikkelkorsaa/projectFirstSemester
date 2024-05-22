@@ -24,6 +24,7 @@ h1 {
 .center-div {
   display: flex;
   justify-content: center;
+  
 }
 
 p {
@@ -242,4 +243,5 @@ button#Clear {
 #deathrate, #co2_emission_in_tons {
   box-shadow: rgba(3, 239, 73, 0.3) 2px 8px 4px -6px;
 }
+
 

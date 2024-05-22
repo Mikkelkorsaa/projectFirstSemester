@@ -56,7 +56,6 @@ function init(dataset, w, h, colName) {
         .attr("font-size", "25px")
         .attr("fill", "black")
         .attr("class", "label");
-
     barChartSvg
         .selectAll("text.value")
         .data(dataset)
