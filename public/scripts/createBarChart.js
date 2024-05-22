@@ -108,3 +108,9 @@ function animateUpdateLabels(colName) {
             }
         })
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("deathrate").innerHTML = "Deathrate";
+    document.getElementById("co2_emission_in_tons").innerHTML = "CO2 Emission";
+});
+
