@@ -18,7 +18,7 @@ function barChart(error, topo) {
 }
 
 function init(dataset, w, h, colName) {
-
+    console.log(dataset[0][colName])
     //Scatter plot
     barChartSvg
         .selectAll("rect")
@@ -32,7 +32,7 @@ function init(dataset, w, h, colName) {
             return (h / dataset.length) * i;
         })
         .attr("width", (d) => {
-            return d[colName];
+            return parseInt(d[colName]);
         })
         .attr("height", () => {
             return (h / dataset.length) - padding;
@@ -86,7 +86,7 @@ function animateUpdateRects(colName) {
         .transition()
         .duration(1500)
         .attr("width", (d) => {
-            return d[colName]
+            return (parseInt(d[colName]) / svgWidth);
         })
 
 }
