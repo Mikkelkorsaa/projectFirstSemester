@@ -14,11 +14,20 @@ function barChart(error, topo) {
         let id = this.id;
         animateUpdateRects(id)
         animateUpdateLabels(id)
+        if (id === "deathrate") {
+            document.getElementById("bar-chart-text").innerHTML = "Measured as deaths per terawatt-hour of electricity production. <br/> 1 terawatt-hour is the anual electricity consumption of 150.000 people in the EU"
+        } else if (id === "co2_emission_in_tons") {
+            document.getElementById("bar-chart-text").innerHTML = "Measured in emissions of CO₂-equivalents per gigawatt-hour of electricity over the lifecycle of the power plant. <br/> 1 gigawatt-hour is the annual electricity consumption of 150 people in the EU."
+        }
     })
 }
 
 function init(dataset, w, h, colName) {
-    console.log(dataset[0][colName])
+    if (colName === "deathrate") {
+        document.getElementById("bar-chart-text").innerHTML = "Measured as deaths per terawatt-hour of electricity production. <br/> 1 terawatt-hour is the anual electricity consumption of 150.000 people in the EU"
+    } else if (colName === "co2_emission_in_tons") {
+        document.getElementById("bar-chart-text").innerHTML = "Measured in emissions of CO₂-equivalents per gigawatt-hour of electricity over the lifecycle of the power plant. <br/> 1 gigawatt-hour is the annual electricity consumption of 150 people in the EU."
+    }
     //Scatter plot
     barChartSvg
         .selectAll("rect")
@@ -26,7 +35,7 @@ function init(dataset, w, h, colName) {
         .enter()
         .append("rect")
         .attr("x", (d) => {
-            return 250;
+            return 180;
         })
         .attr("y", (d, i) => {
             return (h / dataset.length) * i;
@@ -37,6 +46,7 @@ function init(dataset, w, h, colName) {
         .attr("height", () => {
             return (h / dataset.length) - padding;
         })
+        .attr("fill", "#355E3B")
 
     barChartSvg
         .selectAll("text")
@@ -70,7 +80,7 @@ function init(dataset, w, h, colName) {
             }
         })
         .attr("x", (d) => {
-            return parseInt(d[colName]) + 255;
+            return parseInt(d[colName]) + 185;
         })
         .attr("y", (d, i) => {
             return ((h / dataset.length) * i) + 20;
@@ -86,7 +96,7 @@ function animateUpdateRects(colName) {
         .transition()
         .duration(1500)
         .attr("width", (d) => {
-            return (parseInt(d[colName]) / svgWidth);
+            return d[colName];
         })
 
 }
@@ -109,7 +119,7 @@ function animateUpdateLabels(colName) {
         })
 }
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("deathrate").innerHTML = "Deathrate";
     document.getElementById("co2_emission_in_tons").innerHTML = "CO2 Emission";
 });

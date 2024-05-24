@@ -53,11 +53,16 @@ button {
 
 .bar-chart-container {
   margin: 0px;
-  height: 500px;
+  height: 300px;
 }
 
 .label {
   position: absolute;
+}
+
+#bar-chart-text {
+  font-size: 18px;
+  padding: 5px;
 }
 
 .fact-box {
@@ -85,7 +90,7 @@ button {
   position: absolute;
   width: 400px;
   height: 400px;
-  background-color: lightgray;
+  background-color: rgba(211, 211, 211, 0.95);
   border-radius: 5px;
   border-style: solid;
 }
