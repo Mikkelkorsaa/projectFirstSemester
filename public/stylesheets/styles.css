@@ -148,62 +148,7 @@ button#Clear {
   background-color: rgba(24, 223, 97, 0.521);
 }
 
-.flip-box {
-  background-color: transparent;
-  width: 300px;
-  height: 300px;
-  perspective: 1000px;
-}
 
-.flip-box-inner {
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
-}
-
-.flip-box:hover .flip-box-inner {
-  transform: none;
-}
-
-.flip-box-front,
-.flip-box-back {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  backface-visibility: hidden;
-}
-
-.flip-box-front {
-  background-color: #1cbc1cd1;
-}
-
-.flip-box-back {
-  background-color: #555;
-  color: white;
-  transform: rotateY(180deg);
-  display: none;
-}
-
-.flip-box ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.flip-box ul li {
-  cursor: pointer;
-}
-
-
-.wrong-answer {
-  background-color: #ffcccc; /* Ændrer baggrundsfarven for det forkerte svar */
-}
-
-.correct-answer {
-  background-color: #ccffcc; /* Ændrer baggrundsfarven for det rigtige svar */
-
-}
 
 #deathrate, #co2_emission_in_tons {
   align-self: center;
@@ -412,3 +357,8 @@ button.next-button:hover {
 .wrong-answer {
   background-color: #ffcccc; /* Wrong answer background */
 }
+
+body {
+  padding-bottom: 200px;
+}
+
