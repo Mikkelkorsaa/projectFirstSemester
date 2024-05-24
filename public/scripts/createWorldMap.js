@@ -202,7 +202,7 @@ function makeGraphOnCountrys(data) {
         .attr("height", function (d) {
           return h - padding - yScale(d);
         })
-        .attr("fill", "#355E3B");
+        .attr("fill", "#355E3B  ");
 
       // Making the label for the graph
       graphSvg.append('text')
@@ -211,7 +211,7 @@ function makeGraphOnCountrys(data) {
         .attr('text-anchor', 'left')
         .style('font-family', 'Helvetica')
         .style('font-size', 'small')
-        .text('Number of fuel usage');
+        .text('Total number of each powerplants');
 
       // Making y axis appear
       graphSvg.append("g")
