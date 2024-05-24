@@ -52,7 +52,7 @@ function start(data) {
           ]) + ")";
         })
         .attr("class", "pin")
-        .attr("fill", "#d24e21")
+        .attr("fill", "blue")
     }
   })
 }
