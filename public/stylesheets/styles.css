@@ -42,8 +42,8 @@ button {
   margin: 0px;
   padding: 0px;
   height: 70vh;
+  border-bottom: 1px solid #222;
 }
-
 .map {
   position: absolute;
 }
@@ -57,6 +57,7 @@ button {
   height: 600px;
   padding-left: 20%;
   padding-right: 20%;
+  padding-top: 10%;
 }
 
 .label {
