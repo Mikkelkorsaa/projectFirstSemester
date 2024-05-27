@@ -108,7 +108,7 @@ function animateUpdateLabels(colName) {
         .transition()
         .duration(1500)
         .attr("x", (d) => {
-            return parseInt(d[colName]) + 255;
+            return parseInt(d[colName]) + 185;
         })
         .text((d) => {
             if (colName === "deathrate") {
