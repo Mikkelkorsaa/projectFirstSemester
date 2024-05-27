@@ -1,11 +1,48 @@
 // The svg
 const mapSvg = d3.select(".map-container").append("svg").attr("class", "map").attr("width", "100%").attr("height", "100%");
+const width = d3.select("#map").node().getBoundingClientRect().width;
+let height = 500;
+const sensitivity = 75;
 
 // Map and projection
-const path = d3.geoPath();
-const projection = d3.geoMercator()
-  .scale(window.innerWidth / 12)
-  .translate([window.innerWidth / 2.2, window.innerHeight / 2]);
+const projection = d3.geoOrthographic()
+  .scale(250)
+  .center([0, 0])
+  .rotate([0, -30])
+  .translate([width / 2, height / 2])
+
+const initialScale = projection.scale()
+let path = d3.geoPath().projection(projection)
+
+let globe = svg.append("circle")
+  .attr("fill", "#EEE")
+  .attr("stroke", "#000")
+  .attr("stroke-width", "0.2")
+  .attr("cx", width / 2)
+  .attr("cy", height / 2)
+  .attr("r", initialScale)
+
+svg.call(d3.drag().on('drag', () => {
+  const rotate = projection.rotate()
+  const k = sensitivity / projection.scale()
+  projection.rotate([
+    rotate[0] + d3.event.dx * k,
+    rotate[1] - d3.event.dy * k
+  ])
+  path = d3.geoPath().projection(projection)
+  svg.selectAll("path").attr("d", path)
+}))
+  .call(d3.zoom().on('zoom', () => {
+    if (d3.event.transform.k > 0.3) {
+      projection.scale(initialScale * d3.event.transform.k)
+      path = d3.geoPath().projection(projection)
+      svg.selectAll("path").attr("d", path)
+      globe.attr("r", projection.scale())
+    }
+    else {
+      d3.event.transform.k = 0.3
+    }
+  }))
 
 const colorScale = d3.scaleSequential(d3.interpolateGreens);
 
@@ -19,9 +56,9 @@ fetch(heatmapUrl).then(response => {
   return response.json();
 })
   .then(data => {
-   /*  for (let i = 0; i < data.length; i++) {
-      heatData.push({ area_code: data[i].area_code, year_2021: data[i].year_2021 })
-    } */
+    /*  for (let i = 0; i < data.length; i++) {
+       heatData.push({ area_code: data[i].area_code, year_2021: data[i].year_2021 })
+     } */
     makeHeatMap(data)
   })
 
@@ -148,12 +185,12 @@ function makeGraphOnCountrys(data) {
       .on("mouseleave", mouseLeave);
 
     // Check if there is any data to show, if not make a p element that says so
-    if (countryData === undefined) {   
+    if (countryData === undefined) {
       graphBox
         .append("h2")
         .text(d3.select(this).data()[0].properties.name)
         .attr("class", "graph-header")
-      
+
       graphBox
         .append("p")
         .text("There are no power plants for this country.")
