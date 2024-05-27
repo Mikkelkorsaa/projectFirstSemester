@@ -9,7 +9,7 @@
 
   <body>
     <div>
-      <h1>Are nuclear power plants reeeeeally so dangerous?</h1>
+      <h1 class="page-header">Are nuclear power plants reeeeeally so dangerous?</h1>
       <div class="center-div">
         <p class="top-text">
           On this page, you can become more knowledgeable about the various power plants through data visualization. Many believe that nuclear power plants are the most dangerous type of power plant out there - 
@@ -31,83 +31,29 @@
       <button id="Clear" class="pin-button">Clear</button>
     </div>
     <div class="map-container"></div>
-    <div>
-      <button id="deathrate">deathrate</button>
-      <button id="co2_emission_in_tons">co2_emission_in_tons</button>
+    <div class="bar-chart-container">
+      <div>
+        <button id="deathrate">deathrate</button>
+        <button id="co2_emission_in_tons">co2_emission_in_tons</button>
+      </div>
+      <h2 id="bar-chart-text"></h2>      
     </div>
-    <h2 id="bar-chart-text"></h2>
-    <div class="bar-chart-container"></div>
-
-    <div class="flip-box" id="quiz-box">
-      <div class="flip-box-inner" id="flip-box-inner">
-        <div class="flip-box-front" id="question-front-0">
-          <h2>What is the most dangerous?</h2>
-          <button class="button-41" role="button" onclick="revealAnswer(this)">Nuclear</button>
-          <button class="button-41" role="button" onclick="revealAnswer(this)">Coal</button>
-          <button class="button-41" role="button" onclick="revealAnswer(this)">Solar</button>
-        </div>
-        <div class="flip-box-back" id="question-back-0" style="display:none;">
-          <h2>Coal is the most dangerous</h2>
-          <p>Coal power plants are the energy source that emits the most CO2 and is the most dangerous to be around</p>
-          <h2 id="answer-feedback"></h2>
-          <button class="button-84" role="button" onclick="nextQuestion()">Next</button>
-        </div>
-    
-        <div class="flip-box-front" id="question-front-1" style="display:none;">
-          <h2>Which power plant emits the most CO2?</h2>
-          <button class="button-41" role="button" onclick="revealAnswer(this)">Coal</button>
-          <button class="button-41" role="button" onclick="revealAnswer(this)">Natural Gas</button>
-          <button class="button-41" role="button" onclick="revealAnswer(this)">Oil</button>
-        </div>
-        <div class="flip-box-back" id="question-back-1" style="display:none;">
-          <h2>Coal emits the most CO2</h2>
-          <p>Coal is more carbon-intensive than burning natural gas or petroleum for electric power production.</p>
-          <h2 id="answer-feedback"></h2>
-          <button class="button-84" role="button" onclick="nextQuestion()">Next</button>
-        </div>
-    
-        <div class="flip-box-front" id="question-front-2" style="display:none;">
-          <h2>Which one kills the most?</h2>
-          <button class="button-41" role="button" onclick="revealAnswer(this)">Oil</button>
-          <button class="button-41" role="button" onclick="revealAnswer(this)">Gas</button>
-          <button class="button-41" role="button" onclick="revealAnswer(this)">Nuclear</button>
-        </div>
-        <div class="flip-box-back" id="question-back-2" style="display:none;">
-          <h2>Oil has the highest death rate of the 3.</h2>
-          <p>Oil has a death rate that is 613 times higher than Nuclear.</p>
-          <h2 id="answer-feedback"></h2>
-          <button class="button-84" role="button" onclick="nextQuestion()">Next</button>
-        </div>
-    
-        <div class="flip-box-front" id="question-front-3" style="display:none;">
-          <h2>Which energy source has the highest efficiency in energy production?</h2>
-          <button class="button-41" role="button" onclick="revealAnswer(this)">Coal</button>
-          <button class="button-41" role="button" onclick="revealAnswer(this)">Nuclear</button>
-          <button class="button-41" role="button" onclick="revealAnswer(this)">Solar</button>
-        </div>
-        <div class="flip-box-back" id="question-back-3" style="display:none;">
-          <h2>Nuclear power plants.</h2>
-          <p>Nuclear has the most efficiency in energy production.</p>
-          <h2 id="answer-feedback"></h2>
-          <button class="button-84" role="button" onclick="nextQuestion()">Next</button>
-        </div>
-    
-        <div class="flip-box-front" id="question-front-4" style="display:none;">
-          <h2>Were you aware that nuclear power plants are the greenest power plants?</h2>
-          <button class="button-41" role="button" onclick="revealAnswer(this)">No</button>
-          <button class="button-41" role="button" onclick="revealAnswer(this)">Yes</button>
-          <button class="button-41" role="button" onclick="revealAnswer(this)">Maybe</button>
-        </div>
-        <div class="flip-box-back" id="question-back-4" style="display:none;">
-          <h2>Nuclear power plants are the greenest</h2>
-          <p></p>
-          <h2 id="answer-feedback"></h2>
-          <button class="button-84" role="button" onclick="nextQuestion()">Next</button>
+    <div id="flip-card-container">
+      <div id="flip-card">
+        <div id="flip-card-inner">
+          <div id="flip-card-front">
+            <h1 id="quiz-header">Test your knowlege of power plants!</h1>
+            <h2 id="quiz-description">This quiz will give you an idea of how much of what you've been told about power plants is actually true and can be supported by data. TRY IT!</h2>
+            <button id="start-quiz">Start Quiz</button>
+          </div>
+          <div id="flip-card-back">
+            <h1 id="quiz-response"></h1>
+            <h2 id="quiz-feedback"></h2>
+            <button id="next-question">Next Quetion</button>
+          </div>
         </div>
       </div>
     </div>
-
-    
     <div>
       <button onclick="topFunction()" id="buttonToTop" title="goToTop">Top</button>
     </div>
