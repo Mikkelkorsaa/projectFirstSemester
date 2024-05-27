@@ -148,11 +148,15 @@ function makeGraphOnCountrys(data) {
       .on("mouseleave", mouseLeave);
 
     // Check if there is any data to show, if not make a p element that says so
-    if (countryData === undefined) {
+    if (countryData === undefined) {   
+      graphBox
+        .append("h2")
+        .text(d3.select(this).data()[0].properties.name)
+        .attr("class", "graph-header")
+      
       graphBox
         .append("p")
-        .attr("class", "no-data")
-        .text("There is no data for this country :(");
+        .text("There are no power plants for this country.")
     }
 
     // If there is any data, make a graph that shows it
