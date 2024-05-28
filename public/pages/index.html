@@ -12,10 +12,11 @@
       <h1 class="page-header">Are nuclear power plants reeeeeally so dangerous?</h1>
       <div class="center-div">
         <p class="top-text">
-          On this page, you can become more knowledgeable about the various power plants through data visualization. Many believe that nuclear power plants are the most dangerous type of power plant out there - 
-          but is that the case, or is it what society has led us to believe? 
-        </br> </br> Here, you can form your own overview of which power plant poses the greatest risk and which of them is the most environmentally friendly.
-          The world map provides an overview of power plants and where they are located. Additionally, you can participate in a quiz where you will surely be surprised!
+          On this page, you can become more knowledgeable about the various power plants through data visualization. Many believe that nuclear power plants are the most dangerous type of power plant out there - but is that the case, or is it what society has led us to believe? 
+        </br>
+        </br> 
+        Here, you can form your own overview of which power plant poses the greatest risk and which of them is the most environmentally friendly.The world map provides an overview of power plants 
+        and where they are located. It also has a heatmap, whitch shows how far each country is to be 100% green. Additionally, you can participate in a quiz where you will surely be surprised!
         </p>
       </div>
     </div>
@@ -30,7 +31,8 @@
       <button id="Solar" class="pin-button">Solar</button>
       <button id="Clear" class="pin-button">Clear</button>
     </div>
-    <div class="map-container"></div>
+    <div id="map-container">
+    </div>
     <div class="bar-chart-container">
       <div>
         <button id="deathrate">deathrate</button>
@@ -60,7 +62,7 @@
     <script src="https://d3js.org/d3.v4.js"></script>
     <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
     <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
-    <script src="../scripts/createWorldMap.js"></script>
+    <script src="../scripts/worldMap.js"></script>
     <script src="../scripts/createDotsMap.js"></script>
     <script src="../scripts/createBarChart.js"></script>
     <script src="../scripts/quiz.js"></script>
