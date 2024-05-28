@@ -9,7 +9,7 @@ const projection = d3.geoMercator()
 
 const colorScale = d3.scaleSequential(d3.interpolateGreens);
 
-const heatmapUrl = "http://localhost:4000/get-heatmap";
+const heatmapUrl = "https://projectfirstsemester.onrender.com/get-heatmap";
 
 // Fetching data from the api
 fetch(heatmapUrl).then(response => {
