@@ -81,7 +81,7 @@ function ready(error, data) {
 }
 
 // Set the url for the api call
-const powerPlantFuelsUrl = "http://localhost:4000/get-power-plant-fuels";
+const powerPlantFuelsUrl = "https://projectfirstsemester.onrender.com//get-power-plant-fuels";
 
 // Fetching data from the api
 fetch(powerPlantFuelsUrl).then(response => {
