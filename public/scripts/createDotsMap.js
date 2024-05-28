@@ -1,7 +1,7 @@
 /* d3.queue().defer(d3.csv, "../datasheets/global_power_plant_database.csv")
   .await(start); */
 
-const pinsUrl = "http://localhost:4000/get-pins"
+const pinsUrl = "https://projectfirstsemester.onrender.com/get-pins"
 
 fetch(pinsUrl).then(response => {
   if (!response.ok) {
