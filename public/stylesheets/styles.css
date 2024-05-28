@@ -37,7 +37,7 @@ button {
   margin: 5px;
 }
 
-.map-container {
+#map-container {
   position: relative;
   margin: 0px;
   padding: 0px;

@@ -1,15 +1,86 @@
-// The svg
-const mapSvg = d3.select(".map-container").append("svg").attr("class", "map").attr("width", "100%").attr("height", "100%");
+let width = d3.select("#map-container").node().getBoundingClientRect().width
+let height = 800
+const sensitivity = 75
 
-// Map and projection
-const path = d3.geoPath();
-const projection = d3.geoMercator()
-  .scale(window.innerWidth / 12)
-  .translate([window.innerWidth / 2.2, window.innerHeight / 2]);
+let projection = d3.geoOrthographic()
+  .scale(250)
+  .center([0, 0])
+  .rotate([0, -30])
+  .translate([width / 2, height / 2])
 
 const colorScale = d3.scaleSequential(d3.interpolateGreens);
 
+const initialScale = projection.scale()
+let path = d3.geoPath().projection(projection)
+
+let svg = d3.select("#map-container")
+  .append("svg")
+  .attr("width", width)
+  .attr("height", height)
+
+let globe = svg.append("circle")
+  .attr("fill", "#EEE")
+  .attr("stroke", "#000")
+  .attr("stroke-width", "0.2")
+  .attr("cx", width / 2)
+  .attr("cy", height / 2)
+  .attr("r", initialScale)
+
+svg.call(d3.drag().on('drag', () => {
+  const rotate = projection.rotate()
+  const k = sensitivity / projection.scale()
+  projection.rotate([
+    rotate[0] + d3.event.dx * k,
+    rotate[1] - d3.event.dy * k
+  ])
+  path = d3.geoPath().projection(projection)
+  svg.selectAll("path").attr("d", path)
+}))
+  .call(d3.zoom().on('zoom', () => {
+    if (d3.event.transform.k > 0.3) {
+      projection.scale(initialScale * d3.event.transform.k)
+      path = d3.geoPath().projection(projection)
+      svg.selectAll("path").attr("d", path)
+      globe.attr("r", projection.scale())
+    }
+    else {
+      d3.event.transform.k = 0.3
+    }
+  }))
+
+let map = svg.append("g")
+
+d3.queue()
+  .defer(d3.json, "https://raw.githubusercontent.com/JoshYEn/geojson-world/master/world-geo-50m.json")
+  .await(createMap);
+
+function createMap(error, data) {
+  map.append("g")
+    .attr("class", "countries")
+    .selectAll("path")
+    .data(data.features)
+    .enter().append("path")
+    .attr("class", d => "country " + d.properties.name.replace(" ", "-").toLowerCase())
+    .attr("d", path)
+    .attr("fill", "white")
+    .style('stroke', 'black')
+    .style('stroke-width', 0.3)
+    .style("opacity", 0.8)
+
+  //Optional rotate
+  d3.timer(function (elapsed) {
+    const rotate = projection.rotate()
+    const k = sensitivity / projection.scale()
+    projection.rotate([
+      rotate[0] - 1 * k,
+      rotate[1]
+    ])
+    path = d3.geoPath().projection(projection)
+    svg.selectAll("path").attr("d", path)
+  }, 200)
+}
 const heatmapUrl = "http://localhost:4000/get-heatmap";
+const heatmapData = null;
 
 // Fetching data from the api
 fetch(heatmapUrl).then(response => {
@@ -19,9 +90,6 @@ fetch(heatmapUrl).then(response => {
   return response.json();
 })
   .then(data => {
-   /*  for (let i = 0; i < data.length; i++) {
-      heatData.push({ area_code: data[i].area_code, year_2021: data[i].year_2021 })
-    } */
     makeHeatMap(data)
   })
 
@@ -31,53 +99,6 @@ function makeHeatMap(data) {
     const obj = data.find(o => o.area_code === code) || {};
     return colorScale(obj.year_2021 / 100) || 0;
   })
-
-}
-
-// Load external data and boot
-d3.queue()
-  .defer(d3.json, "https://raw.githubusercontent.com/JoshYEn/geojson-world/master/world-geo-50m.json")
-  .await(ready);
-
-function ready(error, data) {
-  const mouseOver = function (d) {
-
-    // Hover effect
-    d3.selectAll(".country")
-      .transition()
-      .duration(200)
-      .style("opacity", .8)
-    d3.select(this)
-      .transition()
-      .duration(200)
-      .style("opacity", 1)
-  }
-
-  const mouseLeave = function (d) {
-    d3.selectAll(".country")
-      .transition()
-      .duration(200)
-      .style("opacity", 1);
-  }
-
-  // Draw the map
-  mapSvg.append("g")
-    .selectAll("path")
-    .data(data.features)
-    .enter()
-    .append("path")
-    // draw each country
-    .attr("d", d3.geoPath()
-      .projection(projection)
-    )
-    // set the color of each country
-    .attr("fill", "grey")
-    .attr("stroke", "black")
-    .attr("stroke-width", 0.2)
-    .attr("class", "country")
-    .style("opacity", .8)
-    .on("mouseover", mouseOver)
-    .on("mouseleave", mouseLeave);
 }
 
 // Set the url for the api call
