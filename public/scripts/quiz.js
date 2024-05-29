@@ -1,8 +1,8 @@
 const questions = [
   {
-    question: "What is the most dangerous energy source?",
+    question: "Which power plant is the most dangerous energy source?",
     answers: ["Nuclear", "Coal", "Solar"],
-    feedback: "Coal power plants are the energy source that emits the most CO2 and is the most dangerous to be around!",
+    feedback: "Coal power plants are the most dangerous to be around! It even has a deathrate, that is over 800 times higher than Nuclear power plants!",
     correctAnswer: "Coal"
   },
   {
@@ -12,15 +12,15 @@ const questions = [
     correctAnswer: "Coal"
   },
   {
-    question: "Which one kills the most?",
+    question: "Which of these power plants kills the most?",
     answers: ["Oil", "Gas", "Nuclear"],
-    feedback: "Oil has a death rate that is 613 times higher than Nuclear!",
+    feedback: "Like coal, oil has a deathrate that is over 600 times higher than Nuclear!",
     correctAnswer: "Oil"
   },
   {
     question: "Which energy source has the highest efficiency in energy production?",
     answers: ["Coal", "Nuclear", "Solar"],
-    feedback: "Nuclear has the most efficiency in energy production.",
+    feedback: "Even tho nuclear is the one with the lowest amount of CO2 emission, and has the lowest deathrate, nuclear actually produce much more energy, than all of the others!",
     correctAnswer: "Nuclear"
   }
 ];
@@ -87,7 +87,7 @@ const nextQuestion = function () {
   if (index < questions.length) {
     document.getElementById("flip-card-inner").style.transform = "rotateY(0deg)";
     d3.selectAll("#answerOne, #answerTwo, #answerThree").style("background-color", "#e7e7e7");
-    d3.select("#quiz-question").text(questions[index].question);
+    d3.select("#quiz-header").text(questions[index].question);
     if (questions[index].answers[0] === questions[index].correctAnswer) {
       d3.select("#answerOne").text(questions[index].answers[0]).on("click", correctAnswer);
     } else {

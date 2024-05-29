@@ -9,7 +9,7 @@ const pool = new Pool({
     rejectUnauthorized: false,
   },
 });
-
+/*
 const insertData = (request, response) => {
   const caldata = "../public/datasheets/EG_FEC_RNEW.csv";
   const options = {
@@ -32,7 +32,7 @@ const insertData = (request, response) => {
       const insertStatement = `INSERT INTO fuel_info (fuel_name,deathrate,co2_emission_in_tons) VALUES ($1, $2, $3)`;
       const items = [source, deathrate, co2_emission_in_tons]; 
       */
-
+      /*
       const { Goal, Target, Indicator, SeriesCode, SeriesDescription, GeoAreaCode, GeoAreaName, ReportingType, Units, year_2000, year_2001, year_2002, year_2003, year_2004, year_2005, year_2006, year_2007, year_2008, year_2009, year_2010, year_2011, year_2012, year_2013, year_2014, year_2015, year_2016, year_2017, year_2018, year_2019, year_2020, year_2021 } = row;
 
       const insertStatement = `INSERT INTO tmp_ren (
@@ -67,7 +67,7 @@ const insertData = (request, response) => {
     response.status(500).send('Error converting CSV to JSON');
   });
 };
-
+*/
 const getPins = (request, response) => {
   pool.query("SELECT pi.latitude, pi.longitude, fi.fuel_name FROM pin_info pi JOIN fuel_info fi ON fi.fuel_id = pi.fuel_id", (error, results) => {
     if (error) {
@@ -96,7 +96,7 @@ const getHeatmap = (request, response) => {
 }
 
 module.exports = {
-  insertData,
+  //insertData,
   getPins,
   getPowerPlantFuels,
   getHeatmap
