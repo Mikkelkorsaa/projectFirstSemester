@@ -209,7 +209,7 @@ button#Clear {
 }
 
 #flip-card-back {
-  background-color: #4f8156;
+  background-color: #3a8a44;
   color: #f1f1f1;
   transform: rotateY(180deg);
 }

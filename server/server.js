@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
 const db = require("./queries");
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 10000;
 
 require("dotenv").config();
 
@@ -20,7 +20,7 @@ app.get("/", (request, response) => {
   response.sendFile(path.resolve(__dirname, '../public/pages/index.html'));
 });
 
-app.post("/insert", db.insertData);
+// app.post("/insert", db.insertData);
 app.get("/get-pins", db.getPins)
 app.get("/get-power-plant-fuels", db.getPowerPlantFuels)
 app.get("/get-heatmap", db.getHeatmap)
